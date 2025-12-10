@@ -1,0 +1,23 @@
+{
+  "short_name": "Mediclinic AI",
+  "name": "Mediclinic AI Medical Dashboard",
+  "description": "AI-powered medical dashboard with Llama 3.2 for health explanations",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary"
+}
