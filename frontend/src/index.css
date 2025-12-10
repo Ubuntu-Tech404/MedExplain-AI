@@ -2,52 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
+  :root {
+    --primary: #3b82f6;
+    --primary-dark: #1d4ed8;
+  }
+  
   body {
-    @apply bg-gray-50 text-gray-900;
-    font-size: 16px;
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
-  /* Larger text for elderly users */
-  h1 {
-    @apply text-3xl md:text-4xl font-bold;
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
   
-  h2 {
-    @apply text-2xl md:text-3xl font-semibold;
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
   }
   
-  p {
-    @apply text-lg leading-relaxed;
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
   }
   
-  button, input, select {
-    @apply text-lg;
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
   }
 }
 
 @layer components {
-  .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-200 p-6;
+  /* Card styles */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
   }
   
+  .medical-card {
+    @apply bg-white rounded-2xl shadow-md border border-gray-100 p-6;
+  }
+  
+  /* Button styles */
   .btn-primary {
-    @apply bg-medical-blue text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors;
+    @apply bg-primary-600 text-white px-4 py-2.5 rounded-xl font-medium 
+           hover:bg-primary-700 transition-all duration-200 
+           focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
   .btn-secondary {
-    @apply bg-medical-teal text-white px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors;
+    @apply bg-primary-100 text-primary-700 px-4 py-2.5 rounded-xl font-medium 
+           hover:bg-primary-200 transition-all duration-200 
+           border border-primary-200;
   }
   
-  .alert-warning {
-    @apply bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded;
+  /* Input styles */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-300 
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500 
+           focus:ring-offset-0 outline-none transition-all
+           placeholder:text-gray-400;
   }
   
-  .alert-danger {
-    @apply bg-red-50 border-l-4 border-red-500 p-4 rounded;
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
   }
   
-  .medical-term {
-    @apply bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm font-medium;
+  .badge-success {
+    @apply bg-medical-green/10 text-medical-green border border-medical-green/20;
   }
+  
+  .badge-warning {
+    @apply bg-medical-orange/10 text-medical-orange border border-medical-orange/20;
+  }
+  
+  .badge-critical {
+    @apply bg-medical-red/10 text-medical-red border border-medical-red/20;
+  }
+  
+  .badge-info {
+    @apply bg-primary-100 text-primary-700 border border-primary-200;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    @apply bg-white rounded-2xl p-4 shadow-sm border border-gray-100;
+  }
+  
+  /* Mobile bottom navigation */
+  .mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 
+           py-2 px-4 flex justify-around items-center z-50
+           md:hidden;
+  }
+  
+  /* Dashboard grid */
+  .dashboard-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
